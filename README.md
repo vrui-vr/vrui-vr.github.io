@@ -1,3 +1,6 @@
+<!-- define abbreviations -->
+*[VSCode]: Visual Studio Code
+
 <!-- Badges -->
 [![Build & Deploy Docs](https://github.com/vrui-vr/docs/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/vrui-vr/docs/actions/workflows/build-and-deploy.yml)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://vrui-vr.github.io/docs/)
@@ -8,6 +11,26 @@
 A central repository that hosts the configuration and build settings for documentation across all repos in the VRUI organization.
 
 The docs are built using [MkDocs](https://www.mkdocs.org/) with the [Material for MkDocs theme](https://squidfunk.github.io/mkdocs-material/).
+
+Check out the [Table of Contents](#table-of-contents) for details regarding how 
+
+## Table of Contents
+
+- [docs](#contributing-to-vrui)
+  - [Table of Contents](#table-of-contents)
+  - [How it works](#how-it-works)
+    - [Updating the docs site](#updating-the-docs-site)
+    - [Site config](#site-config)
+    - [Merging nav.yml files](#merging-navyml-files)
+    - [Behind the scenes](#behind-the-scenes)
+  - [Contributor Setup and Workflow (VSCode)](#contributor-setup-and-workflow-vscode)
+    - [Setting up a VSCode workspace](#setting-up-a-vscode-workspace)
+    - [Forking and Cloning](#forking-and-cloning)
+      - [Forking](#forking)
+      - [Cloning](#cloning)
+    - [Setting Up and Fetching Upstream](#setting-up-and-fetching-upstream)
+  - [Getting started: adding documentation for a new repo](#getting-started-adding-documentation-for-a-new-repo)
+  - [Testing changes locally](#testing-changes-locally)
 
 ## How it works
 
@@ -25,7 +48,7 @@ The main configuration for the documentation site is in `mkdocs.base.yml`. This 
 
 This is important because it ensures a consistent look/feel across all documentation and access to plugins, regardless of which repo the docs come from.
 
-### Merging `nav.yml` files
+### Merging `nav.yml` files 
 
 While the base navigation structure is defined in `mkdocs.base.yml`, each repo can define its own navigation structure by adding a `nav.yml` file in its `docs/` directory.
 
@@ -51,6 +74,92 @@ What this looks like:
 ![Screenshot of GH Actions run](assets/media/gh-run.png)
 
 A new build and deploy job is triggered, and appears to be "manually" run by the user who owns the PAT (currently me: @nredick).
+
+## Contributor Setup and Workflow (VSCode)
+
+Below, we'll include some tips of how to setup a VSCode workspace, clone and fork multiple repositories, and default/upstream repositories, if you choose to contribute to Vrui documentation and/or code.
+
+### Setting up a VSCode workspace
+
+To contribute to Vrui, either in documentation in code, one easy way to work in multiple cloned Vrui repositories in parallel is in a VSCode workspace. A VSCode workspace is a collection of one or more folders that are opened in a VSCode window (instance). Vrui is organized in multiple repositories (found [here](https://github.com/vrui-vr)), including a repository for each supported application, a repository to setup documentation (`vrui-vr/docs`), and the toolkit itself (`vrui-vr/vrui`). To contribute to Vrui's documentation and code, at least two repositories will need to be cloned and forked:
+- This documentation repository, `vrui-vr/docs`, as this connects to other `docs` subfolders in application repositories.
+- The repository for the application you are contributing to.
+
+??? note
+   Cloning and Forking repositories will be expanded upon in the [next section](#cloning-and-forking), and is also covered in the [Contributing doc](https://vrui-vr.github.io/docs/CONTRIBUTING/).
+
+One way to create a workspace is to create a folder in your file directory, in which you will keep cloned (and forked) Vrui repositories. 
+
+???+ tip
+   If you would like to download VSCode, check out this link: [Download Visual Studio Code](https://code.visualstudio.com/download). For a more comprehensive explanation of workspaces, check out this link: [What is a VS Code workspace?](https://code.visualstudio.com/docs/editing/workspaces/workspaces)
+
+### Forking and Cloning
+
+?? info "Heads up!"
+   These instructions are adapted from GitHub's site, which contains more comprehensive instructions: [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+
+#### Forking
+To make a copy of an application repository (and the `vrui-vr\docs` repository), you will create a fork, a new repository that is a copy of the original “upstream” repository (created by Vrui maintainers). Forks can be used to create changes outside of the upstream repository, which are then proposed back to the upstream repository in the form of a pull request. 
+
+To fork a repo, navigate to your preferred repo, click the fork button, and create a new fork with your GitHub account as the owner, checking the "Copy the `main` branch only" box: 
+
+![](assets/media/Fork_Button_Screenshot.png)
+
+This fork can now be found in your GitHub account's list of repositories.
+
+#### Cloning
+
+After forking, you will have a fork of a Vrui repo in you GitHub account. Next, you will need to clone that fork to save the files in that repository locally on your computer. The following steps cover a very simple way of cloning your fork and opening it in VSCode: 
+
+1. First, navigate to your fork in GitHub (in your GitHub account's list of repositories) and copy its URL. 
+
+2. In a new VSCode window, open your earlier created Workspace (a folder in your computer's file system). 
+
+3. Navigate to the Source Control tab: 
+
+![](assets/media/VSCode_Source_Control_Tab.png)
+
+And click the "Clone Repository" button, where you will be able to paste your fork's URL in VSCode's search bar:
+
+![](assets/media/VSCode_Clone_URL.png)
+
+?? info "Heads up!"
+   Check out the "Cloning your forked repository" section in the GitHub page referenced earlier: [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+
+
+### Setting Up and Fetching Upstream
+
+After forking and cloning one of Vrui's repositories, you will need to add an "upstream" repository explicitly. An upstream repository is the original project repository that you forked or cloned from. In this case, you want to set the upstream as the original Vrui repo that you forked, as found on [Vrui's GitHub](https://github.com/vrui-vr). The upstream repository is where Vrui maintainers will add updates to code and documentation. By adding the upstream, you will then be able to safely incorporate Vrui maintainer's latest changes to the repositories into your local fork. In a VSCode terminal, copy the following commands in your VSCode terminal to add the original repository as the upstream:
+
+??? info "Heads up!"
+    Angle brackets `<>` in commands below are placeholders, meaning that you have to replace everything between, and including, the angle brackets with some text that depends on your specific circumstances.
+
+1. To find the link in this command, navigate to the upstream (`vrui-vr/<repo_name>`) repository in GitHub and copy the HTTPS URL (which is slightly different from the repo's URL in your browser):
+
+![](assets/media/GitHub_clone_url.png)
+
+```sh
+git remote add upstream https://github.com/<ORIGINAL-OWNER/ORIGINAL-REPOSITORY.git>
+```
+
+2. This command downloads the latest changes made in the upstream repository into your local Git repository without automatically merging them into the current branch (which may be main, if you haven't created another branch) of your fork.
+
+```sh
+git fetch upstream
+```
+
+3. This command integrates the latest changes from the "upstream" repository, downloaded in the last command, into your own fork.
+
+```sh
+git merge upstream/main
+```
+
+?? info "Heads up!"
+   Check out the "Configuring Git to sync your fork with the upstream repository" section in the GitHub page referenced earlier: [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+
+???+ tip
+   Check out GitHub's page on repositories to understand the different kinds and terminology: [About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories).
+
 
 ## Getting started: adding documentation for a new repo
 
