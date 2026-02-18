@@ -97,7 +97,7 @@ This fork can now be found in your GitHub account's list of repositories.
 
 After forking, you will have a fork of a Vrui repo in you GitHub account. Next, you will need to clone that fork to save the files in that repository locally on your computer.  
 
-0. Before cloning a repository, it's recommended to create a folder in your file system, a parent directory, to store your cloned Vrui repositories. This can be done in your VSCode terminal via the following command: 
+0. Before cloning a repository, it's recommended to create a folder in your file system, a parent directory, to store your cloned Vrui repositories. This can be done in your terminal via the following command: 
 
 ```sh
 mkdir <parent-directory>
