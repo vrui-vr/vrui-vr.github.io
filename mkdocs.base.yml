@@ -1,5 +1,5 @@
-site_name: VRUI
-site_url: https://vrui-vr.github.io/docs/
+site_name: Vrui
+site_url: https://vrui-vr.github.io/
 
 repo_url: https://github.com/vrui-vr
 repo_name: vrui-vr
@@ -34,11 +34,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.arithmatex:
       generic: true
-  # - pymdownx.superfences:
-  #     custom_fences:
-  #       - name: mermaid
-  #         class: mermaid
-  #         format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - toc:
       title: On this page
       permalink: true
