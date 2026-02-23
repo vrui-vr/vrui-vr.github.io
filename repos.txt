@@ -1,4 +1,3 @@
 vrui
 kinect
 arsandbox
-3dvisualizer
