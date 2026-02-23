@@ -90,13 +90,13 @@ theme:
 extra:
   social:
     - icon: material/gavel
-      link: /GOVERNANCE
+      link: /governance
       name: Governance
     - icon: material/handshake
-      link: /CONTRIBUTING
+      link: /contributing
       name: Contributing to Vrui
     - icon: material/account-heart
-      link: /CODE_OF_CONDUCT
+      link: /code_of_conduct
       name: Code of Conduct
 
 extra_javascript:
