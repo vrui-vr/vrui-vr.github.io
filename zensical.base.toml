@@ -61,7 +61,7 @@
             media       = "(prefers-color-scheme)"
             toggle.icon = "lucide/sun-moon"
             toggle.name = "Switch to light mode"
-            primary = "amber"
+            primary = "deep orange"
             accent = "blue"
 
         # Palette toggle for light mode
@@ -70,7 +70,7 @@
             scheme      = "default"
             toggle.icon = "lucide/sun"
             toggle.name = "Switch to dark mode"
-            primary = "amber"
+            primary = "deep orange"
             accent = "blue"
 
         # Palette toggle for dark mode
@@ -79,7 +79,7 @@
             scheme      = "slate"
             toggle.icon = "lucide/moon"
             toggle.name = "Switch to system preference"
-            primary = "amber"
+            primary = "deep orange"
             accent = "blue"
 
     [[project.extra.social]]
