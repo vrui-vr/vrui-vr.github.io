@@ -33,7 +33,7 @@
         pymdownx.superfences  = {}
         pymdownx.fancylists   = {}
         pymdownx.saneheaders  = {}
-        pymdownx.tabbed       = {} # todo update things with options to tabbed
+        pymdownx.tabbed       = { alternate_style = true }
         pymdownx.smartsymbols = {}
         pymdownx.snippets     = { base_path = ["docs/shared/"], auto_append = ["abbreviations.md"]}
         tables                = {}
